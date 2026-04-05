@@ -1,6 +1,8 @@
 # 🧾 Invoico Pro — Generator Invoice Profesional
 
-**Invoico Pro** adalah alat pembuat invoice berbasis web yang canggih, dirancang untuk bisnis modern dan pekerja lepas (freelancer). Aplikasi ini menggabungkan estetika premium "Slate & Sapphire" dengan editor interaktif yang fungsional untuk mempercepat proses penagihan Anda.
+**Invoico Pro** adalah alat pembuat invoice berbasis web yang canggih, dirancang untuk bisnis modern dan pekerja lepas (freelancer).
+
+### 🔗 [Lihat Demo Langsung](https://eckopraptono.github.io/invoice/)
 
 ![Invoico Pro Preview](https://via.placeholder.com/1200x600/1e293b/ffffff?text=Invoico+Pro+—+Generator+Invoice+Profesional) <!-- Catatan: Ganti dengan screenshot asli jika tersedia -->
 
