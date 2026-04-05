@@ -157,12 +157,20 @@ function cycleStatus() {
     const text        = document.getElementById('status-text');
     badge.className   = statusConfig[next].cls;
     text.textContent  = statusConfig[next].label;
+
+    // Auto toggle stamp based on status
+    const stamp = document.getElementById('digital-stamp');
+    if (stamp) {
+        stamp.style.display = (next === 'paid') ? 'block' : 'none';
+    }
 }
 
-// --- Stamp Toggle ---
+// --- Stamp Toggle (Manual override if needed) ---
 function toggleStamp() {
     const stamp = document.getElementById('digital-stamp');
-    stamp.style.display = stamp.style.display === 'none' ? 'block' : 'none';
+    if (stamp) {
+        stamp.style.display = stamp.style.display === 'none' ? 'block' : 'none';
+    }
 }
 
 // --- Reset ---
