@@ -88,12 +88,25 @@ function render() {
 
 function updateDesc(idx, val) {
     items[idx].desc = val;
-    calcTotals();
+    // No need to re-render or calc totals for description
 }
 
 function updateItem(idx, key, val) {
+    // Update numeric state
     items[idx][key] = parseFloat(val) || 0;
-    render();
+    
+    // Calculate and update the row total in DOM surgically
+    const rowTotal = items[idx].qty * items[idx].price;
+    const rowElement = document.querySelectorAll('.item-row')[idx];
+    if (rowElement) {
+        const totalCell = rowElement.querySelector('.td-total');
+        if (totalCell) {
+            totalCell.textContent = formatRp(rowTotal);
+        }
+    }
+
+    // Update global totals
+    calcTotals();
 }
 
 function calcTotals() {
