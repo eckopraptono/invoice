@@ -1,62 +1,62 @@
-# 🧾 Invoico Pro — Professional Invoice Generator
+# 🧾 Invoico Pro — Generator Invoice Profesional
 
-**Invoico Pro** is a sophisticated, web-based invoice generation tool designed for modern businesses and freelancers. It combines a premium "Slate & Sapphire" aesthetic with a highly functional, interactive editor to streamline your billing process.
+**Invoico Pro** adalah alat pembuat invoice berbasis web yang canggih, dirancang untuk bisnis modern dan pekerja lepas (freelancer). Aplikasi ini menggabungkan estetika premium "Slate & Sapphire" dengan editor interaktif yang fungsional untuk mempercepat proses penagihan Anda.
 
-![Invoico Pro Preview](https://via.placeholder.com/1200x600/1e293b/ffffff?text=Invoico+Pro+—+Professional+Invoice+Generator) <!-- Note: Replace with actual screenshot if available -->
+![Invoico Pro Preview](https://via.placeholder.com/1200x600/1e293b/ffffff?text=Invoico+Pro+—+Generator+Invoice+Profesional) <!-- Catatan: Ganti dengan screenshot asli jika tersedia -->
 
-## ✨ Key Features
+## ✨ Fitur Utama
 
-- **🎯 Direct Editing**: Click and type directly on any element to update company info, client details, and invoice metadata.
-- **🔢 Smart Calculations**: Automatic real-time calculation of line items, subtotals, PPN (11% tax), and final totals.
-- **📄 High-Quality PDF Export**: Optimized for A4 paper format with professional print styling.
-- **🏢 Professional Layout**: Includes sections for:
-  - Dynamic company branding & logo.
-  - Client information details.
-  - Itemized service/product tables.
-  - Payment details (Bank Info).
-  - Terms and Notes.
-  - Double signature blocks.
-- **🔄 Status Management**: Toggle invoice status (Waiting, Paid, Cancelled) with a single click.
-- **🛡️ Digital Stamp**: Built-in "PAID" digital stamp for finalized documents.
-- **📱 Responsive Sidebar**: Quick navigation and export controls via a sleek administrative sidebar.
+- **🎯 Pengeditan Langsung**: Klik dan ketik langsung pada elemen apa pun untuk memperbarui info perusahaan, detail klien, dan metadata invoice.
+- **🔢 Kalkulasi Cerdas**: Perhitungan otomatis secara real-time untuk setiap item, subtotal, PPN (11%), dan total akhir.
+- **📄 Ekspor PDF Berkualitas Tinggi**: Dioptimalkan untuk format kertas A4 dengan gaya cetak profesional.
+- **🏢 Tata Letak Profesional**: Mencakup bagian untuk:
+  - Branding & logo perusahaan dinamis.
+  - Detail informasi klien.
+  - Tabel layanan/produk itemisasi.
+  - Detail pembayaran (Info Bank).
+  - Syarat dan Catatan.
+  - Blok tanda tangan ganda.
+- **🔄 Manajemen Status**: Ganti status invoice (Menunggu, Dibayar, Dibatalkan) dengan satu klik.
+- **🛡️ Stempel Digital**: Stempel digital "PAID" bawaan untuk dokumen yang telah selesai.
+- **📱 Sidebar Responsif**: Navigasi cepat dan kontrol ekspor melalui sidebar administratif yang elegan.
 
-## 🚀 Getting Started
+## 🚀 Memulai
 
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Edge, Safari).
+### Prasyarat
+- Browser web modern (Chrome, Firefox, Edge, Safari).
 
-### Usage
-1. Open `index.html` in your favorite browser.
-2. Fill in your company and client details by clicking the text.
-3. Add or remove line items using the **"Tambah Baris"** or delete buttons.
-4. Toggle **PPN 11%** if applicable.
-5. Click **"Ekspor PDF"** to save your professional invoice.
+### Penggunaan
+1. Buka `index.html` di browser favorit Anda.
+2. Isi detail perusahaan dan klien Anda dengan mengeklik teks yang ada.
+3. Tambah atau hapus item menggunakan tombol **"Tambah Baris"** atau tombol hapus.
+4. Aktifkan **PPN 11%** jika diperlukan.
+5. Klik **"Ekspor PDF"** untuk menyimpan invoice profesional Anda.
 
-## 🛠️ Technology Stack
+## 🛠️ Stack Teknologi
 
-- **Core**: Semantic HTML5 & Modern Javascript (ES6+).
-- **Styling**: Vanilla CSS3 with:
-  - Custom Design System (Slate & Sapphire palette).
-  - Responsive Grid & Flexbox layouts.
-  - Glassmorphism & Micro-animations.
-- **Typography**: 
+- **Inti**: Semantic HTML5 & Modern Javascript (ES6+).
+- **Gaya (Styling)**: Vanilla CSS3 dengan:
+  - Sistem Desain Kustom (palet Slate & Sapphire).
+  - Tata letak Grid & Flexbox responsif.
+  - Efek Glassmorphism & Mikro-animasi.
+- **Tipografi**: 
   - [Inter](https://fonts.google.com/specimen/Inter) (Body)
   - [Outfit](https://fonts.google.com/specimen/Outfit) (Headers)
   - [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) (Accents)
-- **Icons**: [Phosphor Icons](https://phosphoricons.com/)
+- **Ikon**: [Phosphor Icons](https://phosphoricons.com/)
 
-## 📂 Project Structure
+## 📂 Struktur Proyek
 
 ```text
 Invoice/
-├── index.html    # Core structure and layout
-├── style.css     # Premium styling and print optimizations
-├── script.js    # Logic for calculations and interactions
-└── README.md     # Project documentation
+├── index.html    # Struktur inti dan tata letak
+├── style.css     # Gaya premium dan optimasi cetak
+├── script.js    # Logika untuk kalkulasi dan interaksi
+└── README.md     # Dokumentasi proyek
 ```
 
-## 📄 License
-Created by **Eko Praptono**. Feel free to use and adapt for your own business needs.
+## 📄 Lisensi
+Dibuat oleh **Eko Praptono**. Silakan gunakan dan sesuaikan untuk kebutuhan bisnis Anda sendiri.
 
 ---
-*Built with ❤️ for better business efficiency.*
+*Dibuat dengan ❤️ untuk efisiensi bisnis yang lebih baik.*
