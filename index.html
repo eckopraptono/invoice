@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoico Pro — Invoice Generator</title>
+    <meta name="description"
+        content="Generator invoice profesional untuk bisnis modern. Buat, edit, dan ekspor invoice PDF dengan mudah.">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- PDF Export Library -->
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- App Shell -->
+    <div class="app-shell">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" data-html2canvas-ignore>
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    <i class="ph-fill ph-receipt"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">Invoico</span>
+                    <span class="brand-tag">Pro</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Dokumen</div>
+                <button class="nav-item active" id="nav-invoice">
+                    <i class="ph ph-file-text"></i>
+                    <span>Invoice</span>
+                </button>
+                <button class="nav-item" onclick="resetInvoice()">
+                    <i class="ph ph-arrow-counter-clockwise"></i>
+                    <span>Reset Baru</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="nav-section-label">Ekspor</div>
+                <button class="btn-export" onclick="exportPDF()" id="export-btn">
+                    <i class="ph ph-download-simple"></i>
+                    <span>Ekspor PDF</span>
+                    <div class="btn-export-badge">A4</div>
+                </button>
+                <p class="export-hint">Format A4 · High Quality</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Bar (screen only) -->
+            <div class="topbar" data-html2canvas-ignore>
+                <div class="topbar-left">
+                    <h2 class="page-title">Invoice Editor</h2>
+                    <span class="page-subtitle">Klik teks untuk mengedit langsung</span>
+                </div>
+                <div class="topbar-right">
+                    <div class="status-indicator">
+                        <div class="status-dot-pulse"></div>
+                        <span>Live Preview</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoice Paper -->
+            <div class="paper-container">
+                <div class="invoice-paper" id="invoice-area">
+
+                    <!-- Invoice Header -->
+                    <div class="iv-header">
+                        <div class="iv-company">
+                            <div class="iv-logo">
+                                <i class="ph-fill ph-monitor"></i>
+                            </div>
+                            <div class="iv-company-info">
+                                <h2 class="iv-company-name" contenteditable="true" spellcheck="false">DOTCOM PARTNER
+                                </h2>
+                                <p class="iv-company-tagline" contenteditable="true" spellcheck="false">Trust your partner</p>
+                                <p class="iv-company-address" contenteditable="true" spellcheck="false">Pematangsiantar
+                                </p>
+                                <p class="iv-company-contact" contenteditable="true" spellcheck="false">
+                                    dotcom.partner@gmail.com &nbsp;·&nbsp; +62 812-3456-7890</p>
+                            </div>
+                        </div>
+                        <div class="iv-title-block">
+                            <h1 class="iv-main-title">INVOICE</h1>
+                            <div class="iv-number-tag">
+                                <span class="iv-hash">#</span>
+                                <span class="iv-number" contenteditable="true" spellcheck="false"
+                                    id="invoice-no-val">INV-2026-001</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accent Line -->
+                    <div class="iv-accent-line"></div>
+
+                    <!-- Meta Strip -->
+                    <div class="iv-meta-strip">
+                        <div class="iv-meta-item">
+                            <span class="iv-meta-label">Total Tagihan</span>
+                            <span class="iv-meta-val iv-meta-highlight" id="header-total">Rp 0</span>
+                        </div>
+                        <div class="iv-meta-divider"></div>
+                        <div class="iv-meta-item">
+                            <span class="iv-meta-label">Tanggal Terbit</span>
+                            <input type="date" class="iv-date-input" id="issue-date" value="2026-04-01">
+                        </div>
+                        <div class="iv-meta-divider"></div>
+                        <div class="iv-meta-item">
+                            <span class="iv-meta-label">Jatuh Tempo</span>
+                            <input type="date" class="iv-date-input iv-date-danger" id="due-date" value="2026-04-07">
+                        </div>
+                        <div class="iv-meta-divider"></div>
+                        <div class="iv-meta-item">
+                            <span class="iv-meta-label">Status</span>
+                            <div class="iv-status-badge iv-status-waiting" id="status-toggle" onclick="cycleStatus()">
+                                <div class="iv-status-dot"></div>
+                                <span id="status-text">Menunggu</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Section -->
+                    <div class="iv-billing-section">
+                        <div class="iv-billing-from">
+                            <p class="iv-section-label">Dari</p>
+                            <p class="iv-billing-name" contenteditable="true" spellcheck="false">DOTCOM PARTNER</p>
+                            <p class="iv-billing-detail" contenteditable="true" spellcheck="false">Pematangsiantar</p>
+                        </div>
+                        <div class="iv-billing-arrow">
+                            <i class="ph ph-arrow-right"></i>
+                        </div>
+                        <div class="iv-billing-to">
+                            <p class="iv-section-label">Ditagihkan Kepada</p>
+                            <input type="text" class="iv-field-input iv-client-name" id="c-name"
+                                placeholder="Nama Klien / Perusahaan" spellcheck="false">
+                            <textarea class="iv-field-input iv-client-addr" id="c-addr" placeholder="Alamat lengkap..."
+                                spellcheck="false" rows="2"></textarea>
+                            <input type="text" class="iv-field-input iv-client-contact" id="c-phone"
+                                placeholder="Telepon / Email" spellcheck="false">
+                        </div>
+                    </div>
+
+                    <!-- Items Table -->
+                    <div class="iv-table-wrap">
+                        <table class="iv-table" id="items-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-no">#</th>
+                                    <th class="col-desc">Deskripsi Layanan</th>
+                                    <th class="col-qty">Qty</th>
+                                    <th class="col-price">Harga Satuan</th>
+                                    <th class="col-total">Jumlah</th>
+                                    <th class="col-action" data-html2canvas-ignore></th>
+                                </tr>
+                            </thead>
+                            <tbody id="items-body">
+                                <!-- Rendered by JS -->
+                            </tbody>
+                        </table>
+                        <div class="iv-add-row" data-html2canvas-ignore>
+                            <button class="btn-add-item" onclick="addItem()">
+                                <i class="ph ph-plus"></i> Tambah Baris
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bottom: Notes + Summary -->
+                    <div class="iv-bottom-grid">
+
+                        <!-- Left: Bank + Notes -->
+                        <div class="iv-left-bottom">
+                            <div class="iv-bank-block">
+                                <p class="iv-section-label">Informasi Pembayaran</p>
+                                <div class="iv-bank-card">
+                                    <div class="iv-bank-row iv-bank-name-row">
+                                        <i class="ph-fill ph-bank"></i>
+                                        <span class="iv-bank-name" contenteditable="true" spellcheck="false">Bank
+                                            Central Asia (BCA)</span>
+                                    </div>
+                                    <div class="iv-bank-number" contenteditable="true" spellcheck="false">820 124 3165
+                                    </div>
+                                    <div class="iv-bank-owner">
+                                        <span class="iv-bank-owner-label">A.N.</span>
+                                        <span class="iv-bank-owner-name" contenteditable="true" spellcheck="false">Eko
+                                            Praptono</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="iv-notes-block">
+                                <p class="iv-section-label">Catatan</p>
+                                <textarea class="iv-field-input iv-notes-area"
+                                    placeholder="Tambahkan catatan atau syarat pembayaran..." spellcheck="false">1. Harap lakukan pembayaran sesuai nominal di atas.
+2. Lampirkan bukti transfer untuk mempercepat konfirmasi.</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Right: Summary -->
+                        <div class="iv-summary-block">
+                            <div class="iv-summary-row">
+                                <span class="iv-summary-label">Subtotal</span>
+                                <span class="iv-summary-val" id="subtotal-val">Rp 0</span>
+                            </div>
+
+                            <div class="iv-ppn-toggle" data-html2canvas-ignore>
+                                <label class="iv-toggle" for="ppn-checkbox">
+                                    <input type="checkbox" id="ppn-checkbox" onchange="togglePPN()">
+                                    <span class="iv-toggle-track"></span>
+                                    <span class="iv-toggle-label">PPN 11%</span>
+                                </label>
+                            </div>
+
+                            <div class="iv-summary-row iv-ppn-row" id="ppn-display" style="display:none;">
+                                <span class="iv-summary-label">PPN (11%)</span>
+                                <span class="iv-summary-val" id="ppn-val">Rp 0</span>
+                            </div>
+
+                            <div class="iv-summary-total-row">
+                                <span class="iv-total-label">Total</span>
+                                <span class="iv-total-val" id="total-val">Rp 0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signatures -->
+                    <div class="iv-signatures">
+                        <div class="iv-sig-block">
+                            <p class="iv-sig-role">Diterima Oleh,</p>
+                            <div class="iv-sig-space"></div>
+                            <div class="iv-sig-line"></div>
+                            <p class="iv-sig-name" contenteditable="true" spellcheck="false">Pihak Klien</p>
+                        </div>
+                        <div class="iv-sig-block iv-sig-right">
+                            <p class="iv-sig-role">Hormat Kami,</p>
+                            <div class="iv-sig-space" onclick="toggleStamp()">
+                                <div class="iv-stamp-wrap">
+                                    <div class="iv-stamp" id="digital-stamp" style="display:none;">PAID</div>
+                                </div>
+                            </div>
+                            <div class="iv-sig-line"></div>
+                            <p class="iv-sig-name" contenteditable="true" spellcheck="false">Eko Praptono</p>
+                            <p class="iv-sig-title" contenteditable="true" spellcheck="false">Director</p>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="iv-footer">
+                        <span>Dokumen ini dibuat secara digital</span>
+                        <span class="iv-footer-dot">·</span>
+                        <span>Terima kasih atas kepercayaan Anda</span>
+                    </div>
+
+                </div><!-- end #invoice-area -->
+            </div><!-- end .paper-container -->
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
